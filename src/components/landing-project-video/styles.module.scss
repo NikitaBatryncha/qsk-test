@@ -1,0 +1,11 @@
+.video {
+  width: auto;
+  height: 100vh;
+  object-fit: contain;
+  pointer-events: none;
+
+  &-section {
+    width: auto;
+    height: 100vh;
+  }
+}

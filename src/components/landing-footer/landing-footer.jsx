@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from './landing-footer.module.css'
+import styles from './styles.module.scss'
 
 export default function LandingFooter() {
   return (

@@ -1,6 +1,6 @@
 'use client'
 import { useLayoutEffect, useEffect, useRef } from 'react';
-import styles from './landing-header.module.css';
+import styles from './styles.module.scss';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
