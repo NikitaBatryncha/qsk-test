@@ -1,5 +1,5 @@
 .title {
-  width: 16vw;
+  width: 14vw;
   height: 100vh;
   position: relative;
 
@@ -7,7 +7,7 @@
     position: absolute;
     transform: translate(-50%, -50%) rotate(270deg);
     width: 100vh;
-    height: 16vw;
+    height: 14vw;
     left: 50%;
     top: 50%;
   }
@@ -24,7 +24,7 @@
 
   &-item {
     font-family: sans-serif;
-    font-size: 12.5rem;
+    font-size: 9rem;
     font-weight: 300;
     white-space: nowrap;
     flex-shrink: 0;
@@ -33,7 +33,7 @@
     &::after {
       content: "";
       height: 3px;
-      width: 12.5rem;
+      width: 9rem;
       margin: 0 3.75rem;
       display: inline-block;
       background-color: currentColor;

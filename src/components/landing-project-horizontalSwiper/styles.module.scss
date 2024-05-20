@@ -1,21 +1,21 @@
 .wrapper {
   position: relative;
-  width: 40vw;
-  margin-right: 1.5rem;
+  width: 100vw;
+  margin: 1.5rem 0;
   --x: 50%;
   --y: 50%;
   overflow: hidden;
 }
 
 .slider {
-  width: 40vw;
+  width: 100vw;
   height: 100vh;
   margin: 0;
   pointer-events: none;
 }
 
 .slide {
-  width: 40vw;
+  width: 100vw;
   height: 100vh;
 
   &-image {
@@ -83,7 +83,7 @@
   left: var(--x);
   top: var(--y);
   transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
+  transition: transform 0.6s ease-in-out;
   z-index: 15 !important;
   border: none;
   outline: none;
@@ -91,12 +91,4 @@
   &::after {
     content: url(../../../public/arrow-white.svg);
   }
-}
-
-.wrapper .slider-button-next {
-  animation: exit 500ms forwards;
-}
-
-.wrapper:hover .slider-button-next {
-  animation: enter 500ms forwards;
 }
