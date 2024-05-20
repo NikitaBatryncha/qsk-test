@@ -1,4 +1,3 @@
-"use client";
 import React, { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper/core';
@@ -19,8 +18,7 @@ const slides = [
   { id: 6, imageUrl: "images/slider/6.jpeg" }
 ];
 
-export default function LandingProjectSwiper({swiper}) {
-
+export default function LandingProjectHorizontalSwiper({ swiper }) {
   const totalSlides = slides.length;
 
   const [firstSwiper, setFirstSwiper] = useState(null);
@@ -38,6 +36,13 @@ export default function LandingProjectSwiper({swiper}) {
     const y = event.clientY - hoverBox.getBoundingClientRect().top;
     hoverBox.style.setProperty("--x", `${x}px`);
     hoverBox.style.setProperty("--y", `${y}px`);
+
+    // Update button position
+    const button = hoverBox.querySelector(`.${styles["slider-button-next"]}`);
+    if (button) {
+      button.style.left = `50%`;
+      button.style.top = `calc(50% + 200px)`;
+    }
   };
 
   const handleNextSlide = () => {
@@ -74,9 +79,9 @@ export default function LandingProjectSwiper({swiper}) {
         controller={{ control: secondSwiper }}
         onSlideChange={(swiper) => handleSlideChange(swiper)}
       >
-        {swiper.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.id} className={styles["slide"]}>
-            <img src={slide.imageUrl} alt="slide" className={styles["slide-image"]}/>
+            <img src={slide.imageUrl} alt="slide" className={styles["slide-image"]} />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -95,7 +100,7 @@ export default function LandingProjectSwiper({swiper}) {
             controller={{ control: firstSwiper }}
             className={styles["counter"]}
           >
-            {slides.map((slide) => (
+            {slides.map((slide, index) => (
               <SwiperSlide key={slide.id} className={styles["counter-item"]}>
                 {slide.id}
               </SwiperSlide>
