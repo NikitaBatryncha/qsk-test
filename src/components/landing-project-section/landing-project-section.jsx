@@ -5,8 +5,6 @@ import styles from "./styles.module.scss";
 import LandingProjectTitle from "../landing-project-title/landing-project-title";
 import LandingProjectSwiper from "../landing-project-swiper/landing-project-swiper";
 import LandingProjectVideo from "../landing-project-video/landing-project-video";
-import LandingProjectInfo from "../landing-project-info/landing-project-info";
-import LandingProjectHorizontalSwiper from "../landing-project-horizontalSwiper/landing-project-horizontalSwiper"
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -205,18 +203,14 @@ export default function LandingProjectSection() {
   return (
     <div className={styles.pageContainer}>
       <section ref={container} className={styles.section}>
-        <div className={styles["section-wrapper"]}>
-          {ProjectsData.map((project, index) => (
-            <div className={styles["section-horizontal"]}>
-              {project.title ? <LandingProjectTitle title={project.title} /> : null}
-              <LandingProjectSwiper swiper={project.slides}/>
-              <LandingProjectInfo text={project.info}/>\
-              {project.video ? <LandingProjectVideo video={project.video} /> : null}
-              {project.secondSlider ? <LandingProjectHorizontalSwiper swiper={project.secondSlider} /> : null}
-            </div>
-          ))}
-          <button ref={button} onClick={scrollToTop} className={styles.button}>up</button>
-         </div>
+        <div ref={horizontalSection} className={styles["section-wrapper"]}>
+          <div ref={horizontalContent} className={styles["section-horizontal"]}>
+            <LandingProjectTitle title={"Клубный дом Mitte"} />
+            <LandingProjectSwiper />
+            <LandingProjectVideo video={"/images/videos/qsk1.3gp"} />
+          </div>
+          <button ref={button} onClick={scrollToTop} className={styles.button}></button>
+        </div>
       </section>
     </div>
   );
