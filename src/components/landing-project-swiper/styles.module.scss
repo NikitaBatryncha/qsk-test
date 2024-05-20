@@ -2,9 +2,6 @@
   position: relative;
   width: 40vw;
   margin-right: 1.5rem;
-  --x: 50%;
-  --y: 50%;
-  overflow: hidden;
 }
 
 .slider {
@@ -80,10 +77,9 @@
   position: absolute !important;
   background-color: #1e1e1e;
   border-radius: 50%;
-  left: var(--x);
-  top: var(--y);
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
+  right: auto !important;
+  margin-left: -60px !important;
+  margin-top: -60px !important;
   z-index: 15 !important;
   border: none;
   outline: none;
@@ -93,10 +89,3 @@
   }
 }
 
-.wrapper .slider-button-next {
-  animation: exit 500ms forwards;
-}
-
-.wrapper:hover .slider-button-next {
-  animation: enter 500ms forwards;
-}

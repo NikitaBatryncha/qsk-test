@@ -1,12 +1,12 @@
-"use client";
-import React, { useState } from 'react';
+"use client"
+import React, { useRef, useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper/core';
 import { Autoplay, EffectCreative, Controller, Navigation } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import styles from './styles.module.scss';
+import styles from './styles.module.scss'
 
 SwiperCore.use([Autoplay, EffectCreative, Controller, Navigation]);
 
@@ -19,13 +19,21 @@ const slides = [
   { id: 6, imageUrl: "images/slider/6.jpeg" }
 ];
 
-export default function LandingProjectSwiper({swiper}) {
+const initialButtonPosition = {
+  left: `50%`,
+  top: `50%`,
+  transform: `translate(-25%, 181.25px)`
+}
+
+export default function App() {
 
   const totalSlides = slides.length;
 
   const [firstSwiper, setFirstSwiper] = useState(null);
   const [secondSwiper, setSecondSwiper] = useState(null);
 
+  //button
+  const [buttonStyle, setButtonStyle] = useState(initialButtonPosition);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
   const handleSlideChange = (swiper) => {
@@ -33,11 +41,9 @@ export default function LandingProjectSwiper({swiper}) {
   };
 
   const handleMouseMove = (event) => {
-    const hoverBox = event.currentTarget;
-    const x = event.clientX - hoverBox.getBoundingClientRect().left;
-    const y = event.clientY - hoverBox.getBoundingClientRect().top;
-    hoverBox.style.setProperty("--x", `${x}px`);
-    hoverBox.style.setProperty("--y", `${y}px`);
+    const x = event.clientX - event.currentTarget.getBoundingClientRect().left;
+    const y = event.clientY - event.currentTarget.getBoundingClientRect().top;
+    setButtonStyle({ left: `calc(${x}px)`, top: `calc(${y}px)` });
   };
 
   const handleNextSlide = () => {
@@ -46,10 +52,8 @@ export default function LandingProjectSwiper({swiper}) {
     }
   };
 
-  const handleMouseLeave = (event) => {
-    const hoverBox = event.currentTarget;
-    hoverBox.style.setProperty("--x", `50%`);
-    hoverBox.style.setProperty("--y", `calc(50% + 200px)`);
+  const handleMouseLeave = () => {
+    setButtonStyle(initialButtonPosition);
   };
 
   return (
@@ -74,7 +78,7 @@ export default function LandingProjectSwiper({swiper}) {
         controller={{ control: secondSwiper }}
         onSlideChange={(swiper) => handleSlideChange(swiper)}
       >
-        {swiper.map((slide) => (
+        {slides.map((slide, index) => (
           <SwiperSlide key={slide.id} className={styles["slide"]}>
             <img src={slide.imageUrl} alt="slide" className={styles["slide-image"]}/>
           </SwiperSlide>
@@ -95,7 +99,7 @@ export default function LandingProjectSwiper({swiper}) {
             controller={{ control: firstSwiper }}
             className={styles["counter"]}
           >
-            {slides.map((slide) => (
+            {slides.map((slide, index) => (
               <SwiperSlide key={slide.id} className={styles["counter-item"]}>
                 {slide.id}
               </SwiperSlide>
@@ -107,7 +111,7 @@ export default function LandingProjectSwiper({swiper}) {
         </div>
         <div className={styles["counter-line"]}></div>
       </div>
-      <button className={styles["slider-button-next"]} onClick={handleNextSlide} />
+      <button className={styles["slider-button-next"]} style={buttonStyle} onClick={handleNextSlide} />
     </div>
   );
 }

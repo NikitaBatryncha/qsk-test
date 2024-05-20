@@ -6,24 +6,5 @@
 .line {
   font-size: 16px;
   color: black;
-
-}
-
-.list {
-  padding: 0;
-  &-item {
-    list-style: none;
-    display: flex;
-
-    &::before {
-      content: " ";
-      display: block;
-      margin-top: 10px;
-      margin-right: 5px;
-      height: 1px;
-      min-width: 16px;
-      max-width: 16px;
-      background-color: #000;
-    }
-  }
+  
 }

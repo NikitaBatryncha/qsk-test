@@ -88,6 +88,7 @@ export default function LandingProjects () {
         scrub: true,
         start: "-=75px",
         end: "+=790px",
+        markers: true,
       })
 
       ScrollTrigger.create({
