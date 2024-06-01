@@ -51,31 +51,7 @@ export default function LandingIntro () {
         .to(introImage.current, {height: "200px"}, 0)
   }, [])
 
-
-
   return (
-
-      // <section className={styles.homeHeader}>
-      //   <div ref={background} className={styles.backgroundImage} >
-      //     <Image
-      //       src={'/images/slider_1_big.jpeg'}
-      //       fill={true}
-      //       alt="background image"
-      //       priority={true}
-      //     />
-      //   </div>
-      //   <div className={styles.intro}>
-      //     <div ref={introImage} className={styles.introImage}>
-      //       <Image
-      //           src={'/images/1.jpeg'}
-      //           alt="intro image"
-      //           fill={true}
-      //           priority={true}
-      //       />
-      //     </div>
-      //     <h1>Мир как вдохновение</h1>
-      //   </div>
-      // </section>
       <section className={styles.homeHeader}>
         <Swiper
           ref={background}
@@ -104,6 +80,7 @@ export default function LandingIntro () {
               <Image
                 src={slide.imageUrl}
                 fill={true}
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 alt="background image"
                 priority={true}
               />
@@ -138,6 +115,7 @@ export default function LandingIntro () {
                   src={slide.imageUrl}
                   alt="intro image"
                   fill={true}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   priority={true}
                 />
               </SwiperSlide>

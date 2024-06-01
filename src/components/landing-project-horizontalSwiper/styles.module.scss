@@ -1,9 +1,10 @@
+@import "../../app/global-fonts";
+
 .wrapper {
   position: relative;
+  margin: 50px 0;
   width: 100vw;
-  margin: 1.5rem 0;
-  --x: 50%;
-  --y: 50%;
+  margin-right: 1.5rem;
   overflow: hidden;
 }
 
@@ -21,6 +22,7 @@
   &-image {
     width: inherit;
     height: inherit;
+    object-fit: cover;
   }
 }
 
@@ -34,7 +36,7 @@
     top: 55%;
     right: 0;
     padding: 0 1.8rem;
-    font-size: .875rem;
+    font-size: 1.2rem;
     z-index: 10;
     mix-blend-mode: difference;
     filter: invert(1);
@@ -43,7 +45,8 @@
   &-wrapper {
     display: flex;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    @include font ($noto, 400);
   }
 
   &-item {
@@ -80,15 +83,38 @@
   position: absolute !important;
   background-color: #1e1e1e;
   border-radius: 50%;
-  left: var(--x);
-  top: var(--y);
-  transform: translate(-50%, -50%);
-  transition: transform 0.6s ease-in-out;
+  transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
   z-index: 15 !important;
   border: none;
   outline: none;
+  animation: exit 800ms forwards;
+}
 
-  &::after {
-    content: url(../../../public/arrow-white.svg);
+.wrapper:hover .slider-button-next {
+  animation: enter 800ms forwards;
+}
+
+
+@keyframes enter {
+  from {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  }
+}
+
+@keyframes exit {
+  from {
+    transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  }
+
+  to {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
   }
 }

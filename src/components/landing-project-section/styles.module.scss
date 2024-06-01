@@ -32,16 +32,35 @@
 }
 
 .button {
-  display: none;
-  width: 120px;
-  height: 120px;
+  width: 90px;
+  height: 90px;
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  bottom: 90px;
+  right: 30px;
+  opacity: 0;
   padding: 10px 20px;
-  background-color: #000;
+  background-color: #1e1e1e;
   border: none;
   border-radius: 100%;
   cursor: pointer;
   z-index: 1111;
+  background-image: url(../../../public/arrow-totop.svg);
+  background-size: 30px auto;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: transform 0.3s ease-in-out
+              opacity 0.2 ease;
+
+  &:hover {
+    animation: enlarge 0.3s forwards;
+}
+
+@keyframes enlarge {
+  0% {
+    transform: scale(1) translateY(0);
+  }
+  100% {
+    transform: scale(1.1) translateY(0);
+  }
+}
 }

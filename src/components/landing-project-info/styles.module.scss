@@ -1,19 +1,46 @@
+@import "../../app/global-fonts";
+
 .info {
   width: 40vw;
   height: 100vh;
+  padding: 40px 20px;
+  box-sizing: border-box;
+  color: #1e1e1e;
+
+  h5 {
+    margin: 0;
+    margin-bottom: 11px;
+    @include font ($noto, 400);
+    font-size: 2rem;
+  }
+
+  p {
+    margin: 0;
+    margin-bottom: 20px;
+    font-size: 1.3rem;
+    padding-left: 25px;
+    letter-spacing: 0.07rem;
+    font-weight: 300;
+  }
 }
 
 .line {
   font-size: 16px;
-  color: black;
-
+  color: #1e1e1e;
 }
 
 .list {
   padding: 0;
+  color: #1e1e1e;
+
   &-item {
     list-style: none;
     display: flex;
+    color: #1e1e1e;
+    font-size: 1.3rem;
+    letter-spacing: 0.07rem;
+    font-weight: 300;
+
 
     &::before {
       content: " ";
@@ -23,7 +50,7 @@
       height: 1px;
       min-width: 16px;
       max-width: 16px;
-      background-color: #000;
+      background-color: #1e1e1e;
     }
   }
 }

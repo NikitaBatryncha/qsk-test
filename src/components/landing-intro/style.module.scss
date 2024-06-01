@@ -24,6 +24,11 @@
 
 .slide {
   object-fit: cover;
+  position: relative;
+
+  &Small {
+    position: relative;
+  }
 }
 
 .backgroundImage img {

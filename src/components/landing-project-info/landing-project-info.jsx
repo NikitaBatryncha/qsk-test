@@ -5,26 +5,27 @@ export default function LandingProjectInfo({ text }) {
   return (
     <div className={styles["info"]}>
       {text.map((item, index) => (
-        <p key={index}>
-          <span>
-            <b>{item.title}</b>
-          </span>
-          :
+        <div key={index}>
+          <h5>
+            <span>
+              <b>{item.title}</b>
+            </span>
+            :
+          </h5>
           {Array.isArray(item.item) ? (
             <ul className={styles["list"]}>
               {item.item.map((info, idx) => (
-                <li className={styles["list-item"]}>
-                  <span key={idx}>
-                     {info}
+                <li key={idx} className={styles["list-item"]}>
+                  <span>
+                    {info}
                   </span>
                 </li>
-            ))}
+              ))}
             </ul>
-
           ) : (
-            <span> {item.item}</span>
+            <p><span> {item.item}</span></p>
           )}
-        </p>
+        </div>
       ))}
     </div>
   );

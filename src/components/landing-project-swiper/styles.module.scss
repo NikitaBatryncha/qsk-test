@@ -1,9 +1,9 @@
+@import "../../app/global-fonts";
+
 .wrapper {
   position: relative;
   width: 40vw;
   margin-right: 1.5rem;
-  --x: 50%;
-  --y: 50%;
   overflow: hidden;
 }
 
@@ -34,7 +34,7 @@
     top: 55%;
     right: 0;
     padding: 0 1.8rem;
-    font-size: .875rem;
+    font-size: 1.2rem;
     z-index: 10;
     mix-blend-mode: difference;
     filter: invert(1);
@@ -43,7 +43,8 @@
   &-wrapper {
     display: flex;
     align-items: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    @include font ($noto, 400);
   }
 
   &-item {
@@ -80,23 +81,38 @@
   position: absolute !important;
   background-color: #1e1e1e;
   border-radius: 50%;
-  left: var(--x);
-  top: var(--y);
-  transform: translate(-50%, -50%);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, left 0.3s ease, top 0.3s ease;
   z-index: 15 !important;
   border: none;
   outline: none;
-
-  &::after {
-    content: url(../../../public/arrow-white.svg);
-  }
-}
-
-.wrapper .slider-button-next {
-  animation: exit 500ms forwards;
+  animation: exit 800ms forwards;
 }
 
 .wrapper:hover .slider-button-next {
-  animation: enter 500ms forwards;
+  animation: enter 800ms forwards;
+}
+
+
+@keyframes enter {
+  from {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+  }
+
+  to {
+    transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  }
+}
+
+@keyframes exit {
+  from {
+    transform: translate(calc(var(--x) - 50%), calc(var(--y) - 50%));
+  }
+
+  to {
+    left: 50%;
+    top: 65%;
+    transform: translate(-50%, -50%);
+  }
 }

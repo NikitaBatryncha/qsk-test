@@ -54,12 +54,12 @@ export default function LandingHeader() {
   }, []);
 
   return (
-    <section  className={`${styles['header-wrapper']}`}>
+    <section  className={`${styles['header__wrapper']}`}>
       <div ref={header} className={styles['header']}>
-        <ul className={styles['header-menu']}>
+        <ul className={styles['header__menu']}>
           {linksData.map((link, index) => (
             <li key={index}>
-              <Link href={link.link} className={styles['header-link']}>
+              <Link href={link.link} className={styles['header__link']}>
                 {link.name}
               </Link>
             </li>

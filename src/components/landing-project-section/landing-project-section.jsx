@@ -120,7 +120,7 @@ const ProjectsData = [
     slides: [
       { id: 1, imageUrl: "images/slider4/1.jpeg" },
       { id: 2, imageUrl: "images/slider4/2.jpeg" },
-      { id: 2, imageUrl: "images/slider4/3.jpeg" },
+      { id: 3, imageUrl: "images/slider4/3.jpeg" },
 
     ],
     info: [
@@ -140,8 +140,8 @@ const ProjectsData = [
     secondSlider: [
       { id: 1, imageUrl: "images/slider4/1.1.jpeg" },
       { id: 2, imageUrl: "images/slider4/2.1.jpeg" },
-      { id: 1, imageUrl: "images/slider4/3.1.jpeg" },
-      { id: 2, imageUrl: "images/slider4/4.1.jpeg" },
+      { id: 3, imageUrl: "images/slider4/3.1.jpeg" },
+      { id: 4, imageUrl: "images/slider4/4.1.jpeg" },
     ]
   },
   {
@@ -150,11 +150,11 @@ const ProjectsData = [
     slides: [
       { id: 1, imageUrl: "images/slider5/1.jpeg" },
       { id: 2, imageUrl: "images/slider5/2.jpeg" },
-      { id: 2, imageUrl: "images/slider5/3.jpeg" },
-      { id: 2, imageUrl: "images/slider5/4.jpeg" },
-      { id: 2, imageUrl: "images/slider5/5.jpeg" },
-      { id: 2, imageUrl: "images/slider5/6.jpeg" },
-      { id: 2, imageUrl: "images/slider5/7.jpeg" },
+      { id: 3, imageUrl: "images/slider5/3.jpeg" },
+      { id: 4, imageUrl: "images/slider5/4.jpeg" },
+      { id: 5, imageUrl: "images/slider5/5.jpeg" },
+      { id: 6, imageUrl: "images/slider5/6.jpeg" },
+      { id: 7, imageUrl: "images/slider5/7.jpeg" },
     ],
     info: [
       {title: "ОБЬЕКТ", item: "Офис" },
@@ -185,13 +185,13 @@ export default function LandingProjectSection() {
         trigger: container.current,
         scrub: true,
         start: "top +=20px",
-        end: "+=500px",
+        end: "+=100px",
       },
     });
 
     timeline
-      .to(container.current, { zIndex: 1000 }, 0)
-      .to(button.current, { display: "block" }, 0);
+      .to(button.current, { opacity: 1 }, 0)
+      .fromTo(button.current, { bottom: 0 }, { bottom: 90 }, 0);
   }, []);
 
   const scrollToTop = () => {
@@ -208,13 +208,15 @@ export default function LandingProjectSection() {
           <div className={styles["section-wrapper"]}>
             <div className={styles["section-horizontal"]}>
               {project.title ? <LandingProjectTitle title={project.title} /> : null}
-              <LandingProjectSwiper swiper={project.slides}/>
-              <LandingProjectInfo text={project.info}/>
+              <LandingProjectSwiper swiper={project.slides} />
+              <LandingProjectInfo text={project.info} />
             </div>
             {project.video ? <LandingProjectVideo video={project.video} /> : null}
-            {project.secondSlider ? <LandingProjectHorizontalSwiper swiper={project.secondSlider} /> : null}
-            <button ref={button} onClick={scrollToTop} className={styles.button}>up</button>
-           </div>
+            {project.secondSlider ? (
+              <LandingProjectHorizontalSwiper swiper={project.secondSlider} />
+            ) : null}
+            <button ref={button} onClick={scrollToTop} className={styles.button}></button>
+          </div>
         </section>
       ))}
     </div>
